@@ -270,10 +270,19 @@ fbackupfile(const char *fn)
 	(void) fchmod(to, (sb.st_mode & 0777));
 
 	/* copy the mtime to the backupfile */
+#ifdef __APPLE__
+# ifdef TARGET_OS_MAC
+	//struct timespec new_times[2];
+	//new_times[0] = sb.st_atimespec;
+	//new_times[1] = sb.st_mtimespec;
+	//futimens(to, new_times);  TODO: Add a portable version to openbsdlib
+# endif
+#else
 	struct timespec new_times[2];
 	new_times[0] = sb.st_atim;
 	new_times[1] = sb.st_mtim;
 	futimens(to, new_times);
+#endif
 
 	close(from);
 	close(to);
