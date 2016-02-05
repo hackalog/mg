@@ -14,6 +14,7 @@
 #include <unistd.h>
 
 #include	"chrdef.h"
+#include "openbsd-compat.h"
 
 #if defined(__APPLE__) || defined(__FreeBSD__)
 #  define LOGIN_NAME_MAX _POSIX_LOGIN_NAME_MAX

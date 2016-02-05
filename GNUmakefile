@@ -42,6 +42,8 @@ OBJS=	autoexec.o basic.o bell.o buffer.o cinfo.o dir.o display.o \
 	line.o macro.o main.o match.o modes.o paragraph.o \
 	re_search.o region.o search.o spawn.o tty.o ttyio.o ttykbd.o \
 	undo.o util.o version.o window.o word.o yank.o
+# Hack for macos. Fix with a proper openbsd compat library
+OBJS+= strtonum.o reallocarray.o
 OBJS+=	cmode.o cscope.o dired.o grep.o tags.o theo.o
 
 
